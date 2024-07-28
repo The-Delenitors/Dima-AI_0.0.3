@@ -22,10 +22,10 @@ def ask_gemini(user_prompt_command):
         cap.release()
 
         # Configure Google Generative AI
-        api_key = "AIzaSyBu2n2QDMvAb3V4ciHF07kn5hrXMIazozM"  # Replace with your actual API key
+        api_key = "AIzaSyCi5EYAd8kASk2UQG-BZAIugmOHieQmLUw"  # Replace with your actual API key
         genai.configure(api_key=api_key)
         generation_config = {"temperature": 0.9, "top_p": 1, "top_k": 1, "max_output_tokens": 2048}
-        model = genai.GenerativeModel("gemini-1.5-flash", generation_config=generation_config)
+        model = genai.GenerativeModel("gemini-1.5-pro", generation_config=generation_config)
 
         # Create prompt parts
         prompt_text = (
