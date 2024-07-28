@@ -1,7 +1,7 @@
 NOTE: INNSTALL A VIRTUAL ENVIRONMENT BY TYPING: "py -m venv venv" in terminal and then install the following libraries in the terminal itself
 Make a python virtual environment on powershell and activate it:
 
-cd path_to_folder
+cd path_to_folder (replace path_to_folder with the path to the repository)
 py -m venv venv
 venv/Scripts/activate.ps1
 
