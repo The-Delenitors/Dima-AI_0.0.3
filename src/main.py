@@ -18,7 +18,7 @@ def start():
         print("DEBUG -- User said:"+user_promt)
 
         # Checking if the user said the wake word
-        if any(word in user_promt.lower() for word in ["dima", "dayma", "deema", "daima"]):
+        if any(word in user_promt.lower() for word in ["dima", "dayma", "deema", "daima", "dheema", "dhima"]):
             # Greeting the user if the wake word is detected
             print("DEBUG -- Wake word detected. Say your command")
             greet()
@@ -26,18 +26,19 @@ def start():
             # Listening for command
             user_promt_command = listen()
             print("DEBUG -- User said:"+user_promt_command)
-
+    
             # Checking if the user wants to cancel or stop the program
-            if any(word in user_promt_command.lower() for word in ["cancel", "stop", "exit", "quit"]):
+            if any(phrase in user_promt_command.lower() for phrase in ["stop program", "exit program", "quit program", "close program"]):
+                print("DEBUG -- Stop command detected. Exiting...")
+                speak("ok")
+                break  
+            elif any(word in user_promt_command.lower() for word in ["cancel", "stop", "exit", "quit"]):
                 print("DEBUG -- Cancel command detected.")
                 speak("Ok.")
                 continue
             elif user_promt_command == ("."):
                 continue
-            elif any(phrase in user_promt_command.lower() for phrase in ["stop program", "exit program", "quit program", "close program"]):
-                print("DEBUG -- Stop command detected. Exiting...")
-                speak("ok")
-                break   
+ 
 
             # Sending the command to gemini
             ask_gemini(user_promt_command)
