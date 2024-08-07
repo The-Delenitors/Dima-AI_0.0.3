@@ -30,7 +30,7 @@ def navigate():
         # Create prompt parts
         prompt_text = (
             "You are DIMA AI (Digital Instant Mapping Artificial Intelligence), situated on a spectacle set equipped with a camera. "
-            "Your purpose is to assist visually impaired individuals in navigation. Avoid giving multiple instructions at once (max 3)"
+            "Your purpose is to assist visually impaired individuals in navigation. Avoid giving multiple instructions at once (max 2)"
             "The statement in quotes (e.g. 'abcabc') is what the blind person is asking you"
             "Give commands to the blind person like go forward, turn left, turn right, stop, etc. Give only necessary info."
             "The blind person asks: 'Guide me. The attached image is what is in fron of me. Please tell me where to go' "
