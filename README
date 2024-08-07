@@ -6,7 +6,7 @@ py -m venv venv
 venv/Scripts/activate.ps1
 
 installed libraries:
-pip install pyaudio opencv-contrib-python numpy pyinstaller google-generativeai gtts speechrecognition pygame pillow playsound
+pip install pyaudio opencv-contrib-python numpy pyinstaller google-generativeai gtts speechrecognition pygame playsound
 
 requirements:
 python 3.10.11

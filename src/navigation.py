@@ -13,7 +13,7 @@ def navigate(user_navigation_prompt = "Guide me. The attached image is what is i
     if ret:
         # Display the captured image
         cv2.imshow('DEBUG -- Captured Image', frame)
-        cv2.waitKey(5000)  # Wait for 5 seconds
+        cv2.waitKey(1) 
         cv2.destroyAllWindows()
 
         # Convert the frame to image bytes
@@ -29,7 +29,7 @@ def navigate(user_navigation_prompt = "Guide me. The attached image is what is i
 
         # Create prompt parts
         prompt_text = (
-            "You are DIMA AI (Digital Instant Mapping Artificial Intelligence), situated on a spectacle set equipped with a camera. "
+            "You are DIMA AI (Digital Image Mapping Assistant Artificial Intelligence), situated on a spectacle set equipped with a camera. "
             "Your purpose is to assist visually impaired individuals in navigation. Avoid giving multiple instructions at once (max 4)"
             "The statement in quotes (e.g. 'abcabc') is what the blind person is asking you"
             "Give commands to the blind person like go forward, turn left, turn right, stop, etc. Give only necessary info."

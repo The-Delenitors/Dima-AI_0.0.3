@@ -6,7 +6,7 @@ from greet import greet
 
 def start():
     print("DEBUG -- Initializing...")
-    speak("Digital instant mapping assistant artificial intelligence is starting. Please wait a moment.")
+    speak("Digital image mapping assistant artificial intelligence is starting. Please wait a moment.")
 
     while True:
         # Resetting prompts
@@ -19,7 +19,7 @@ def start():
         print("DEBUG -- User said:"+user_promt)
 
         # Checking if the user said the wake word
-        if any(word in user_promt.lower() for word in ["dima", "dayma", "deema", "daima", "dheema", "dhima"]):
+        if any(word in user_promt.lower() for word in ["dima", "dayma", "deema", "daima", "dheema", "dhima", "dema", "computer"]):
             # Greeting the user if the wake word is detected
             print("DEBUG -- Wake word detected. Say your command")
             greet()
@@ -29,7 +29,7 @@ def start():
             print("DEBUG -- User said:"+user_promt_command)
 
             # Navigation mode
-            if any(word in user_promt_command.lower() for word in ["activate navigation mode","turn on navigation mode"]):
+            if any(word in user_promt_command.lower() for word in ["activate navigation mode", "turn on navigation mode", "navigation mode", "navigation", "activate navigation"]):
                 speak("Navigation mode is activating.")
                 print("DEBUG -- Navigation mode is activating")
 
@@ -40,8 +40,8 @@ def start():
                     print("DEBUG -- User said:"+user_navigation_prompt)
 
                     # Checking if the user wants to cancel navigation mode
-                    if any(word in user_promt_command.lower() for word in ["cancel", "stop", "exit", "quit"]):
-                        print("DEBUG -- Cancel command detected.")
+                    if any(word in user_navigation_prompt.lower() for word in ["cancel", "stop", "exit", "quit"]):
+                        print("DEBUG -- Cancel command detected.")  
                         speak("Exiting navigation maode")
                         break
 
@@ -49,7 +49,7 @@ def start():
                     navigate(user_navigation_prompt)
 
             # Checking if the user wants to cancel or stop the program
-            elif any(phrase in user_promt_command.lower() for phrase in ["stop program", "exit program", "quit program", "close program"]):
+            elif any(phrase in user_promt_command.lower() for phrase in ["stop program", "exit program", "quit program", "close program", "top program"]):
                 print("DEBUG -- Stop command detected. Exiting...")
                 speak("ok")
                 break  
@@ -65,7 +65,7 @@ def start():
             
     # Stopping program
     print("DEBUG -- Stopping program...")
-    speak("Digital instant mapping assistant artificial intelligence is closing. Thank you.")
+    speak("Digital image mapping assistant artificial intelligence is closing. Thank you.")
   
 # Starting the program
 if __name__ == "__main__":
