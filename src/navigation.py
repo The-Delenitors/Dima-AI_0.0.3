@@ -2,7 +2,7 @@ import cv2
 import google.generativeai as genai
 from text_to_speech import speak
 
-def navigate():
+def navigate(user_navigation_prompt = "Guide me. The attached image is what is in fron of me. Please tell me where to go"):
     # Capture an image from the webcam
     cap = cv2.VideoCapture(0)
     if not cap.isOpened():
@@ -30,10 +30,10 @@ def navigate():
         # Create prompt parts
         prompt_text = (
             "You are DIMA AI (Digital Instant Mapping Artificial Intelligence), situated on a spectacle set equipped with a camera. "
-            "Your purpose is to assist visually impaired individuals in navigation. Avoid giving multiple instructions at once (max 2)"
+            "Your purpose is to assist visually impaired individuals in navigation. Avoid giving multiple instructions at once (max 4)"
             "The statement in quotes (e.g. 'abcabc') is what the blind person is asking you"
             "Give commands to the blind person like go forward, turn left, turn right, stop, etc. Give only necessary info."
-            "The blind person asks: 'Guide me. The attached image is what is in fron of me. Please tell me where to go' "
+            "The blind person asks: '{}'\n".format(user_navigation_prompt)
         )
         
         image_part = {
@@ -42,7 +42,6 @@ def navigate():
         }
 
         print("DEBUG -- Thinking")
-        speak("Thinking")
 
         # Generate content
         response = model.generate_content([prompt_text, image_part])
@@ -57,4 +56,4 @@ def navigate():
         speak("Could not read frame from webcam.")
         cap.release()
 
-navigate()
+# navigate("Take me out of this room")

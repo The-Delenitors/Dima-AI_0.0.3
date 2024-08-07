@@ -1,6 +1,7 @@
 from text_to_speech import speak
 from speech_to_text import listen
 from connect_with_ai import ask_gemini
+from navigation import navigate
 from greet import greet
 
 def start():
@@ -26,9 +27,29 @@ def start():
             # Listening for command
             user_promt_command = listen()
             print("DEBUG -- User said:"+user_promt_command)
-    
+
+            # Navigation mode
+            if any(word in user_promt_command.lower() for word in ["activate navigation mode","turn on navigation mode"]):
+                speak("Navigation mode is activating.")
+                print("DEBUG -- Navigation mode is activating")
+
+                # Starting navigation loop
+                while True:
+                    # Listening for navigation commands
+                    user_navigation_prompt = listen()
+                    print("DEBUG -- User said:"+user_navigation_prompt)
+
+                    # Checking if the user wants to cancel navigation mode
+                    if any(word in user_promt_command.lower() for word in ["cancel", "stop", "exit", "quit"]):
+                        print("DEBUG -- Cancel command detected.")
+                        speak("Exiting navigation maode")
+                        break
+
+                    # sending user comand to gemini for navigation   
+                    navigate(user_navigation_prompt)
+
             # Checking if the user wants to cancel or stop the program
-            if any(phrase in user_promt_command.lower() for phrase in ["stop program", "exit program", "quit program", "close program"]):
+            elif any(phrase in user_promt_command.lower() for phrase in ["stop program", "exit program", "quit program", "close program"]):
                 print("DEBUG -- Stop command detected. Exiting...")
                 speak("ok")
                 break  
@@ -37,8 +58,7 @@ def start():
                 speak("Ok.")
                 continue
             elif user_promt_command == ("."):
-                continue
- 
+                continue            
 
             # Sending the command to gemini
             ask_gemini(user_promt_command)
