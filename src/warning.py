@@ -2,7 +2,7 @@ import cv2
 import google.generativeai as genai
 from text_to_speech import speak
 
-def ask_gemini(user_prompt_command):
+def warn():
     # Capture an image from the webcam
     cap = cv2.VideoCapture(0)
     if not cap.isOpened():
@@ -30,11 +30,9 @@ def ask_gemini(user_prompt_command):
         # Create prompt parts
         prompt_text = (
             "You are DIMA AI (Digital Image Mapping Assistant Artificial Intelligence), situated on a spectacle set equipped with a camera. "
-            "Your purpose is to assist visually impaired individuals. The statement in quotes (e.g. 'what is your name' which you reply "
-            "telling that you are Dima AI which helps you(you in the sense blind person)) is what a blind person is asking you. If the question is not "
-            "related to the image attached, please indicate that the image does not contain relevant information and answer the question asked or basically act like an assistant."
-            "If there is text in the image, provide a transcription. "
-            "The blind person asks: '{}'\n".format(user_prompt_command)
+            "Your purpose is to assist visually impaired individuals"
+            "The image you are seeing is the blind person's POV. If he/she is in any danger like an approaching car or an obstacle or a pit in front of them, (even if someone is abou to harm them) please warn them"
+            "If there is no danger, dont reply with anything. REMEBMER: only reply when the blind person is in danger. otherwise reply with '.'"
         )
         
         image_part = {
@@ -43,19 +41,19 @@ def ask_gemini(user_prompt_command):
         }
 
         print("DEBUG -- Thinking")
-        speak("Thinking")
 
         # Generate content
         response = model.generate_content([prompt_text, image_part])
 
         # Print the response
         print(response.text)
-        speak(response.text)
+        warning =  response.text
+        if warning == ".":
+            return
 
     # If any errors, printing the errors
     else:
         print("DEBUG -- Error: Could not read frame from webcam.")
-        speak("Could not read frame from webcam.")
         cap.release()
 
 # # Example usage

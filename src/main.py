@@ -3,6 +3,7 @@ from speech_to_text import listen
 from connect_with_ai import ask_gemini
 from navigation import navigate
 from greet import greet
+from warning import warn
 
 def start():
     print("DEBUG -- Initializing...")
@@ -62,6 +63,9 @@ def start():
 
             # Sending the command to gemini
             ask_gemini(user_promt_command)
+        
+        # Checking if the user is in danger
+        warn()
             
     # Stopping program
     print("DEBUG -- Stopping program...")
