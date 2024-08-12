@@ -3,7 +3,7 @@ Make a python virtual environment on powershell and activate it:
 
 cd path_to_folder (replace path_to_folder with the path to the repository)
 py -m venv venv
-venv/Scripts/activate.ps1
+venv/Scripts/activate.ps1 (or) venv/Scripts/activate (Basically activate the vitrual environment)
 
 installed libraries:
 pip install pyaudio opencv-contrib-python numpy pyinstaller google-generativeai gtts speechrecognition pygame playsound
@@ -11,4 +11,4 @@ pip install pyaudio opencv-contrib-python numpy pyinstaller google-generativeai 
 requirements:
 python 3.10.11
 
-pyinstaller --name=Dima-AI_0.0.3 --onefile --add-data="../assets;assets" --add-data="../README;." main.py
+To run the code, run main.py

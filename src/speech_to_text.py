@@ -21,7 +21,7 @@ def listen():
         print("DEBUG -- Recognizing...")
         alert(2)
         # Convert speech to text
-        text = recognizer.recognize_google(audio)
+        text = recognizer.recognize_google(audio)   
         return text
     
     # If any errors, printing the errors
